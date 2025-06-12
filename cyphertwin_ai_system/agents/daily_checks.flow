@@ -1,0 +1,11 @@
+# Langflow autonomous cyber health agent 
+# Langflow Flow Overview:
+# Trigger (scheduler or manual)
+# -System Prompt: “Conduct daily cyber hygiene check on Memgraph Digital Twin.”
+# -LLM + Cypher Tool Chain (Langchain tool to MCP)
+# -Result Parser
+# -Alert Trigger: POST /alert
+# Sample use cases:
+# Patch level check
+# Unused admin account detection
+# Service anomalies (e.g., RDP open at odd hours)
