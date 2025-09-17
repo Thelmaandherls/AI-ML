@@ -1,0 +1,1 @@
+This is my 3 month attempt to build sufficient skills and projects in order to be hired as an AI / Ml Engineer whilst being a fresh gruadate, without prior experience in these specific roles. Keep me accountable!
