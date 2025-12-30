@@ -197,6 +197,7 @@ class LinkedList:
         # return the val being removed 
         return current 
 
+# Strenght of ll comes in inserts and deletes in specific positions 
 # Trty removing at index and node at index to allow to easily delete and read 
 # vals at index 
     def __repr__(self):
