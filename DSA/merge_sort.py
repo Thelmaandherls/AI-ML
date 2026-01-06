@@ -14,6 +14,10 @@ def merge_sort(list):
     divide: find the midpoint of the list and dividie evenly itno sublists 
     conquer: recursively sort the sublist that was created from previous step
     combine: merge the recusively sorted sublists into a single lsit from previous step
+    
+    Takes O(kn log n) time 
+    in actual ms - takes O(n log n)
+    Space complexity is O(n)
     """
     # recursive func has a basic pattern - a base case that includes a stopping condion 
     # some logic that breaks down the problem and recusively calls itself 
@@ -43,6 +47,15 @@ def split(list):
     """  
     Divide the unsorted list at midppoint into sublist 
     Return two sublists - left and right 
+    Called as many times as need to go from inital lsit to single element 
+    list thf runs in logarithmic time - O(log n)
+    Caveat - split via python lsit slicing and pasrsing it 2 indexes where the 
+    split occurs - in python doc, slicing is not constant time - has a run time of 
+    O(k) there k reps the slize size thf in relaity it runs in O(k log n) as there's a 
+    slice operation for each split thf this is much more expensive 
+    To fix this, would have to remove the slicing operation for left and right 
+    using list slicing iteratively as seen in binary search 
+    in proper ms - takes O(log n)
     """
 
     # Determine mid point of the lsit using floor division 
@@ -59,6 +72,14 @@ def merge(left, right):
     """  
     Merges two lists / arrays, sorting them in the process 
     Returns a new merged list 
+    Break original lsit into single element lsit and then need to make
+    comaprison operations and merge them back in the reverse order 
+    For lsit of sizze n, will always need to name n number of merge operations 
+    to get back from single element lsit to anmerge lsit 
+    thf run time = O(n log n) - as there are n number of merge steps multiplied 
+    by a log n number of splits of the original lsit 
+
+    In actuanl ms - it runs in O(n) time 
     """
 
     # Need to sort the values in both list thf need to compare 
@@ -104,16 +125,16 @@ def merge(left, right):
         # comapriing as assuming within the lsit, the elements are already sorted 
         # keep the loop goign until at last index and incrementing the index w
         # every iteration of the loop
-        while i < len(left):
+    while i < len(left):
             l.append(left[i])
             i += 1
 
         # when left is shorter than right 
-        while j < len(right):
+    while j < len(right):
             l.append(right[j])
             j += 1
         
-        return l 
+    return l 
     
 def verify_sorting(list):
     n = len(list)
@@ -123,15 +144,26 @@ def verify_sorting(list):
         return True 
             
     # comapre the first to second value and then every value from then onwards
+    # if element at index 0<1 is false, then return with a false value 
+    # the and operator requires both operations to be true for both to be true 
+    # first condtion evals to false thf don't need to bother w 2nd 
+    # second condition is a recurive call on a sublist starting from postion 1 to the end 
+    # tehcnically comapring the elemnts 1 and 2 in the original lsit but 
+    # 0 and 1 in the sublist and each recusive call is checking the 
+    # enitre list without having to specific any checks other than the first 
+    # two elements - it's recursive thf needs a stopping condition - the if condition
+
     return list[0] < list[1] and verify_sorting(list[1:])
 
 # testing 
-'''
+
 test_lsit = [54, 12, 89,5, 90, 22, 56, 79, 10]
 l = merge_sort(test_lsit)
 print(l)
-'''
+
         
+print(verify_sorting(test_lsit))
+print(verify_sorting(l))
 
 
 

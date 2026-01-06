@@ -54,9 +54,9 @@ class LinkedList:
         """
         Retirn num of nodes in a list and runs in linear time O(n)
         """
-        # len on a python list = consnt time 
+        # len on a python list = constant time 
         # len in linked list = linear time - have to go through each
-        # iteam until reach tail node 
+        # itam until reach tail node 
         current = self.head
         count = 0
 
@@ -200,6 +200,30 @@ class LinkedList:
 # Strenght of ll comes in inserts and deletes in specific positions 
 # Trty removing at index and node at index to allow to easily delete and read 
 # vals at index 
+
+    # Add a convenience method that will return a node at a given index 
+    def node_at_index(self, index):
+        # Instead of tarversing the slit inside of split fun in ll ms, can just 
+        # call this and parse the midpoint index to perform the split 
+
+        if index == 0:
+            return self.head
+        # Traverse the ll and conting up to the index as we citist each node
+        else:
+            current = self.head
+
+            # Indciate out location in list
+            position = 0
+
+            # use a while loop to walk down the loop 
+            while position < index:
+                current = current.next_node
+                position += 1 
+                # Once psotion = index, current = node we're looking for 
+                # thf can return it 
+                return current 
+
+
     def __repr__(self):
         """ 
         Return a string representation of the list 
