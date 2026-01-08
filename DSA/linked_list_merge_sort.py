@@ -12,6 +12,10 @@ def merge_sort(linked_list):
     - Repeatedly merge sublsit to produce sorted sublsit until 1 remaisn 
 
     Return sorted ll 
+    a true runtime of ms = quasilinear run time = O(n log n)
+    the run time of merge sort on a ll 
+
+    Runs in overall O(kn log n)
     '''
 
     # Stopping condition base don naively sorted list - 1 element or empty
@@ -30,14 +34,19 @@ def merge_sort(linked_list):
 
 def split(linked_list):
     '''  
-    Divdie the sunorted lsit at midpoint into sub-linked-lsit
+    Divdie the unsorted lsit at midpoint into sub-linked-lsit
     With slit type, can rely on the fact of using an index and using 
     list slicing to split into 2 list would work ven if an empty lsit is parsed 
     But have no automatic behaviour like that thf need to account for that
     in ll
+
+    Runtime of O(k log n)
+    Overall, splits take a runtime of O(log n) and as this split traverses through 
+    all elements in the list which is k elements, the runtime is O(k log n)
     '''
     # ll can be none if call split on a ll w 1 node thf left = 1 and half = none
     # assing the entire lsit to left half and none to the right 
+    # Constant time operation
     if linked_list == None or linked_list.head == None:
         left_half = linked_list
         right_half = None
@@ -48,12 +57,16 @@ def split(linked_list):
         return left_half, right_half
     else:
         # Account for non-empty ll 
-        # Calc the size of the list usign size methfo 
+        # Calc the size of the list usign size method 
+        # This causes the bottleneck - splitting at the midpoint 
         size = linked_list.size()
         mid = size // 2
 
         # gte the node at that midpoint 
         # deduct 1 to get index value as size returns a val greater than max index val
+        # Node at index method, traverses the lsit thf every split operation incurs 
+        # a O(k) where k is the midpoint of the list which is essentially n/2 as 
+        # have to walk down the lsit  
         mid_node = linked_list.node_at_index(mid - 1)
 
         # split the lsit 
@@ -76,6 +89,7 @@ def merge(left, right):
     '''  
     Merges two ll, sorting by data in the nodes 
     Returns a new merged list
+    Takes O(n) time 
     '''
     # Compare vals from two ll and then return a new ll w 
     # nodes where the data is sorted 
@@ -169,3 +183,5 @@ l.add(20)
 print(l)
 sorted_ll = merge_sort(l)
 print(sorted_ll)
+
+# ll aren't used much in everyday probs but they're similar to arrays 
