@@ -10,6 +10,15 @@ from load import load_numbers
 numbers = load_numbers(sys.argv[1])
 
 def selection_sort(values):
+    """  
+    runtime explained 
+    need to check each item in the list - n 
+    then need to loop over the entire list n amount of times but 
+    with n-1 per iteration making it only 1/2 the n 
+    times being tested -> in a runtime of O(1/2 n^2)
+    but as the data gets bigger, conatnts like 1/2 become isnignificant 
+    thf it's O(n^2)
+    """
     sorted_list = []
     # Unsorted list print statement 
     print("%25s %25s" % (values, sorted_list))
